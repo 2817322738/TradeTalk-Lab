@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>TradeTalk Lab</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <!-- 首页 -->
+  <section id="homePage" class="home-page">
+    <div class="small-logo">TradeTalk Lab</div>
+
+    <div class="home-content">
+      <p class="label">BUSINESS ENGLISH TRAINING</p>
+
+      <h1>
+        学会真正自然的<br>
+        <span>外贸英语</span>
+      </h1>
+
+      <p class="description">
+        进入真实的海外客户沟通场景，练习询价、报价、
+        跟进与谈判中的专业英文表达。
+      </p>
+
+      <button id="startButton">
+        开始第一关
+        <span>→</span>
+      </button>
+      <button id="homeCatalogButton" class="catalog-button">
+  选择题目
+</button>
+
+<div id="homeCatalog" class="home-catalog hidden">
+  <div class="catalog-heading">
+    <div>
+      <p class="catalog-label">QUESTION DIRECTORY</p>
+      <h2>选择训练题目</h2>
+    </div>
+
+    <button id="closeHomeCatalog" class="close-button">
+      ×
+    </button>
+  </div>
+
+  <div id="homeQuestionList" class="question-grid"></div>
+</div>
+    </div>
+
+    <p class="home-note">
+      AI-assisted · Human-reviewed
+    </p>
+  </section>
+
+  <!-- 训练页面 -->
+  <section id="trainingPage" class="training-page hidden">
+    <header class="training-header">
+      <button id="backButton" class="back-button">
+        ← 返回
+        <button id="trainingCatalogButton" class="training-catalog-button">
+  ☰ 题目目录
+</button>
+      </button>
+
+      <span class="corner-logo">TradeTalk Lab</span>
+
+      <span id="levelText" class="level-text">
+  LEVEL 01 / 询价回复
+</span>
+    </header>
+<div id="trainingCatalog" class="catalog-overlay hidden">
+  <div class="catalog-panel">
+    <div class="catalog-heading">
+      <div>
+        <p class="catalog-label">QUESTION DIRECTORY</p>
+        <h2>跳转到其他题目</h2>
+      </div>
+
+      <button id="closeTrainingCatalog" class="close-button">
+        ×
+      </button>
+    </div>
+
+    <div id="trainingQuestionList" class="question-grid"></div>
+
+    <p class="catalog-note">
+      切换题目不会清除已经提交的答案。
+    </p>
+  </div>
+</div>
+    <main class="chat-window">
+      <div class="contact-bar">
+        <div class="contact-avatar">EC</div>
+
+        <div>
+         <h2 id="contactName">Emma Collins</h2>
+<p id="contactRole">UK Retail Buyer · Online</p>
+        </div>
+      </div>
+
+      <div class="chat-area">
+        <p class="chat-time">Today, 10:24 AM</p>
+
+        <div class="message-row">
+          <div class="message-avatar">EC</div>
+
+          <div>
+            <p class="sender-name">Emma Collins</p>
+
+            <div id="customerMessage" class="message-bubble">
+              <p>Hi,</p>
+
+              <p>
+                We are interested in your reusable bamboo
+                cutlery sets.
+              </p>
+
+              <p>
+                Could you send us your best price for 500 sets,
+                including individual packaging?
+              </p>
+
+              <p>
+                Best regards,<br>
+                Emma
+              </p>
+              
+            </div>
+          </div>
+        </div>
+        <div class="reply-section">
+  <p class="reply-title">
+    请选择你认为最专业的回复：
+  </p>
+
+  <button class="reply-option" data-answer="wrong">
+    <span class="option-letter">A</span>
+
+    <span class="option-text">
+      Dear customer, please send us your exact requirements.
+      We will give you our lowest price.
+    </span>
+  </button>
+
+  <button class="reply-option" data-answer="incomplete">
+    <span class="option-letter">B</span>
+
+    <span class="option-text">
+      Hi Emma, thank you for your inquiry. We can offer a good
+      price for 500 bamboo cutlery sets. Please let us know if
+      you are interested.
+    </span>
+  </button>
+
+  <button class="reply-option" data-answer="correct">
+    <span class="option-letter">C</span>
+
+    <span class="option-text">
+      Hi Emma, thank you for your interest in our bamboo
+      cutlery sets. To prepare an accurate quotation for
+      500 sets, could you confirm your preferred packaging
+      requirements and delivery destination? We will then
+      send you the unit price, packaging details and
+      estimated lead time.
+    </span>
+  </button>
+
+  <button id="submitAnswer" disabled>
+    提交答案
+  </button>
+
+  <div id="sentMessage" class="sent-message hidden">
+  <div class="sent-content">
+    <p class="sender-name sent-name">You</p>
+
+    <div id="sentMessageText" class="sent-bubble"></div>
+  </div>
+
+  <div class="your-avatar">YOU</div>
+</div>
+
+  <div id="answerFeedback" class="answer-feedback hidden">
+    <h3 id="feedbackTitle"></h3>
+    <p id="feedbackText"></p>
+  </div>
+  <button id="modelAnswerButton" class="model-answer-button hidden">
+  查看完整参考回复
+</button>
+
+<div id="modelAnswerPanel" class="model-answer-panel hidden">
+  <p class="model-label">MODEL RESPONSE</p>
+
+  <div id="modelAnswerText" class="model-answer-text"></div>
+
+  <div class="key-phrases">
+    <h4>值得学习的表达</h4>
+    <ul id="keyPhraseList"></ul>
+  </div>
+</div>
+  <button id="nextButton" class="next-button hidden">
+  进入下一题
+  <span>→</span>
+</button>
+</div>
+
+      </div>
+
+
+      <div class="task-bar">
+        <div>
+          <p class="task-label">YOUR TASK</p>
+          <p id="taskText">选择最专业、最完整的英文回复</p>
+        </div>
+
+        <span id="progressText">1 / 5</span>
+      </div>
+    </main>
+
+    <div id="resultPage" class="result-page hidden">
+  <p class="result-label">TRAINING COMPLETE</p>
+
+  <h2>本次训练完成</h2>
+
+  <div class="score-circle">
+    <strong id="resultScore">0</strong>
+    <span>/ <span id="resultTotal">0</span></span>
+  </div>
+
+  <p id="resultMessage" class="result-message"></p>
+
+  <div class="result-actions">
+    <button id="restartButton">
+      再练一次
+    </button>
+
+    <button id="homeButton">
+      返回首页
+    </button>
+  </div>
+</div>
+
+  </section>
+
+  <script src="questions.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

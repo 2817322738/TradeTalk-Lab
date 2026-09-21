@@ -20,6 +20,15 @@ const closeHomeCatalog =
 const homeQuestionList =
   document.getElementById("homeQuestionList");
 
+  const aboutProjectButton =
+  document.getElementById("aboutProjectButton");
+
+const projectPage =
+  document.getElementById("projectPage");
+
+const backFromProject =
+  document.getElementById("backFromProject");
+
 
 /* 获取训练页元素 */
 
@@ -671,3 +680,29 @@ homeButton.addEventListener("click", function () {
 /* 第一次打开页面时创建目录 */
 
 renderCatalogs();
+
+aboutProjectButton.addEventListener(
+  "click",
+  function () {
+    homePage.classList.add("hidden");
+    projectPage.classList.remove("hidden");
+
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+  }
+);
+
+backFromProject.addEventListener(
+  "click",
+  function () {
+    projectPage.classList.add("hidden");
+    homePage.classList.remove("hidden");
+
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+  }
+);
